@@ -1,0 +1,1231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ======================================================================= 
+    = MAVEN
+    =========================================================================-->
+    <prerequisites>
+        <maven>3.5.0</maven>
+    </prerequisites>
+
+
+    <!-- ======================================================================= 
+    = PROJECT INFOS
+    =========================================================================-->
+    <groupId>org.inugami.maven.superpom</groupId>
+    <artifactId>superpom-root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+
+    <description>Inugami Maven parent POM.</description>
+
+    <organization>
+        <name>${super.organization.name}</name>
+        <url>${super.organization.url}</url>
+    </organization>
+
+
+    <!-- ======================================================================= 
+    = LICENSE
+    ======================================================================== -->
+    <licenses>
+        <license>
+            <name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
+            <url>https://www.gnu.org/licenses/gpl.txt</url>
+        </license>
+    </licenses>
+    
+    
+    <!-- ======================================================================= 
+    = PROPERTIES
+    =========================================================================-->
+    <properties>
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: GLOBALE
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <super.project.team />
+        <super.project.bugtracker.name />
+        <super.project.bugtracker.url />
+
+        <super.project.wiki.url />
+        <super.site.deploy.url />
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.datePattern>yyyy-MM-dd'T'HH:mm:ss.SSSZ</project.build.datePattern>
+        <project.build.sourceProperties.path>${project.build.directory}/source.properties</project.build.sourceProperties.path>
+
+        <super.enforcer.enable />
+        <super.environment.ci>false</super.environment.ci>
+        <super.repository.url>http://nexus:50080/nexus/content/groups/public</super.repository.url>
+
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: SITE
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <docGroupId>${project.groupId}</docGroupId>
+        <docArtifactId>${project.artifactId}</docArtifactId>
+        <docArtifactVersion>${project.version}</docArtifactVersion>
+        <docArtifactFinalName>${project.build.finalName}</docArtifactFinalName>
+        <superSiteSkinVersion>1.2.1</superSiteSkinVersion>
+        <_super.plugin.site.inputEncoding>${project.build.sourceEncoding}</_super.plugin.site.inputEncoding>
+        <_super.plugin.site.outputEncoding>${project.build.sourceEncoding}</_super.plugin.site.outputEncoding>
+        <!--// Plulgin configuration //______________________________________-->
+        <_super.plugin.site.disable>true</_super.plugin.site.disable>
+        <_super.plugin.site.path>src/site</_super.plugin.site.path>
+        
+
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: SCM
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <!-- SCM hostname might be redefined for SSH-config reasons on servers, for instance -->
+        <super.scm.host />
+        <super.scm.ctx.protocol>scm:git:ssh</super.scm.ctx.protocol>
+        <super.scm.name />
+        <super.scm.type>git</super.scm.type>
+
+        <super.scm.url>http://${super.scm.host}/${super.scm.name}.git</super.scm.url>
+        <super.scm.connection>${super.scm.ctx.protocol}://${super.scm.type}@${super.scm.host}/${_super.scm.team.name}/${super.scm.name}.${super.scm.type}</super.scm.connection>
+        <super.scm.branch>HEAD</super.scm.branch>
+
+        <super.enable.git.source />
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: CI
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <_super.ci.host />
+        <_super.ci.host.context>/jenkins</_super.ci.host.context>
+        <_super.ci.view />
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: MAILING LIST
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <_super.mailing.list.name />
+        <_super.mailing.list.post />
+
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: JMETER
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <super.facet.jmeter>false</super.facet.jmeter>
+        <super.facet.jmeter.test.name />
+        <super.facet.jmeter.jvm.arg />
+        <_super.facet.jmeter.lib.path>${project.build.directory}/jmeter/lib/ext</_super.facet.jmeter.lib.path>
+        <_super.facet.jmeter.jmeter-maven-plugin.version>2.0.3</_super.facet.jmeter.jmeter-maven-plugin.version>
+        <_super.facet.jmeter.jmeter-graph-maven-plugin.version>0.1.0</_super.facet.jmeter.jmeter-graph-maven-plugin.version>
+        <_super.facet.jmeter.jmeter-maven-plugin.xms>1024</_super.facet.jmeter.jmeter-maven-plugin.xms>
+        <_super.facet.jmeter.jmeter-maven-plugin.xmx>1024</_super.facet.jmeter.jmeter-maven-plugin.xmx>
+        <_super.facet.jmeter.jmeter-maven-plugin.xx.new.size>-XX:NewSize=128m</_super.facet.jmeter.jmeter-maven-plugin.xx.new.size>
+        <_super.facet.jmeter.jmeter-maven-plugin.xx.max.size>-XX:MaxNewSize=128m</_super.facet.jmeter.jmeter-maven-plugin.xx.max.size>
+        
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: GIT BUILD NUMBER
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <super.enable.buildnumber />
+        
+        
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: PLUGINS VERSIONS
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <!-- org.maven -->
+        <_super.plugins.org-apache-maven-plugins.maven-resources-plugin>2.7</_super.plugins.org-apache-maven-plugins.maven-resources-plugin>
+        <_super.plugins.org-apache-maven-plugins.maven-assembly-plugin>2.5.2</_super.plugins.org-apache-maven-plugins.maven-assembly-plugin>
+        <_super.plugins.org-apache-maven-plugins.maven-dependency-plugin>2.8</_super.plugins.org-apache-maven-plugins.maven-dependency-plugin>
+        <_super.plugins.org-apache-maven-shared.maven-filtering>1.3</_super.plugins.org-apache-maven-shared.maven-filtering>
+        <_super.plugins.org-apache-maven-plugins.maven-clean-plugin>2.6.1</_super.plugins.org-apache-maven-plugins.maven-clean-plugin>
+        <_super.plugins.org-apache-maven-plugins.maven-release-plugin>2.5.1</_super.plugins.org-apache-maven-plugins.maven-release-plugin>
+        <_super.plugins.org-apache-maven-plugins.maven-enforcer-plugin>1.3</_super.plugins.org-apache-maven-plugins.maven-enforcer-plugin>
+        <_super.plugins.org-apache-maven-plugins.maven-site-plugin>3.3</_super.plugins.org-apache-maven-plugins.maven-site-plugin>
+        <_super.plugin.org.apache.maven.doxia.version>1.3</_super.plugin.org.apache.maven.doxia.version>
+        
+        <!-- org.codehaus -->
+        <_super.plugins.org-codehaus-mojo.xml-maven-plugin>1.0</_super.plugins.org-codehaus-mojo.xml-maven-plugin>
+        <_super.plugins.org-codehaus-mojo.build-helper-maven-plugin>1.9.1</_super.plugins.org-codehaus-mojo.build-helper-maven-plugin>
+        <_super.plugins.org-codehaus-mojo.buildnumber-maven-plugin>1.3</_super.plugins.org-codehaus-mojo.buildnumber-maven-plugin>
+        
+        
+        <!-- org -->
+        <_super.plugins.org-asciidoctor.asciidoctor-maven-plugin>1.5.2</_super.plugins.org-asciidoctor.asciidoctor-maven-plugin>
+        <_super.plugins.org-eclipse-m2e.lifecycle-mapping>1.0.0</_super.plugins.org-eclipse-m2e.lifecycle-mapping>
+        <_super.plugins.org.codehaus.mojo-sonar-maven-plugin.version>3.3.0.603</_super.plugins.org.codehaus.mojo-sonar-maven-plugin.version>
+        
+        <!-- others -->
+        <_super.plugins.pl-project13-maven.git-commit-id-plugin>2.1.15</_super.plugins.pl-project13-maven.git-commit-id-plugin>
+        
+        
+        
+        <!--// reporting versions //_________________________________________-->
+        <_super.reporting.org-apache-maven-plugins.maven-changes-plugin>2.7.1</_super.reporting.org-apache-maven-plugins.maven-changes-plugin>
+        <_super.reporting.org-apache-maven-plugins.maven-jxr-plugin>2.3</_super.reporting.org-apache-maven-plugins.maven-jxr-plugin>
+        <_super.reporting.org-apache-maven-plugins.maven-project-info-reports-plugin>2.7</_super.reporting.org-apache-maven-plugins.maven-project-info-reports-plugin>
+        <_super.reporting.org-apache-maven-plugins.maven-plugin-plugin>3.1</_super.reporting.org-apache-maven-plugins.maven-plugin-plugin>
+
+
+        <!--// dependencies versions //______________________________________-->
+        <_super.org-asciidoctor.asciidoctorj-pdf>1.5.0-alpha.6</_super.org-asciidoctor.asciidoctorj-pdf>
+        <_super.xalan.xalan>2.7.2</_super.xalan.xalan>
+        <_super.org-apache-maven-doxia>1.3</_super.org-apache-maven-doxia>
+
+        
+        <!-- remove tar complain about too big guid -->
+        <assembly.tarLongFileMode>posix</assembly.tarLongFileMode>
+              
+        
+
+        <!-- Maven plugins -->
+        <maven.assembly.plugin />
+        <maven.docker.spotify.plugin />
+        <maven.docker.rhuss.plugin />
+        <maven.katana.plugin />
+
+        <!-- jGitFlow plugin -->
+        <jgitflow.pushReleases>false</jgitflow.pushReleases>
+        <jgitflow.noDeploy>true</jgitflow.noDeploy>
+        <jgitflow.noTag>true</jgitflow.noTag>
+        <jgitflow.featureName />
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        :: SONAR
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <super.sonar.exclusions />
+        <super.sonar.java.coveragePlugin>jacoco</super.sonar.java.coveragePlugin>
+
+        <sonar.exclusions>
+            ${super.sonar.exclusions}
+            **/*Exception*,
+            **/*ValueObject*,
+            **/vendors/**,
+            **/webapp/fonts/**,
+            **/webapp/mock/**
+        </sonar.exclusions>
+        <sonar.java.coveragePlugin>${super.sonar.java.coveragePlugin}</sonar.java.coveragePlugin>
+    </properties>
+    
+
+    <!-- ======================================================================= 
+    = MODULES
+    =========================================================================-->
+    <modules>
+        <module>inugami-superpom-java</module>
+    </modules>
+    
+    
+    
+    <!-- ======================================================================= 
+    = SCM AND CI 
+    =========================================================================-->
+
+    <scm>
+        <url>${super.scm.url}</url>
+        <connection>${super.scm.connection}</connection>
+        <developerConnection>${project.scm.connection}</developerConnection>
+        <tag>v0.0.8</tag>
+    </scm>
+
+
+    <ciManagement>
+        <system>${super.ci.name}</system>
+        <url>${_super.ci.host}${_super.ci.host.context}${_super.ci.host.context}${_super.ci.view}</url>
+    </ciManagement>
+
+    <issueManagement>
+        <system>${super.project.bugtracker.name}</system>
+        <url>${super.project.bugtracker.url}</url>
+    </issueManagement>
+
+    <mailingLists>
+        <mailingList>
+            <name>${_super.mailing.list.name}</name>
+            <post>${_super.mailing.list.post}</post>
+        </mailingList>
+    </mailingLists>
+
+
+
+    <!-- ======================================================================= 
+    = PROFILES
+    =========================================================================-->
+    <profiles>
+
+        <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+        :: facets
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <profile>
+            <id>facets.site</id>
+            <activation>
+                <file>
+                    <missing>${_super.plugin.site.path}</missing>
+                </file>
+            </activation>
+            <properties>
+                <_super.plugin.site.disable>true</_super.plugin.site.disable>
+            </properties>
+        </profile>
+       
+       <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+       :: ENVIRONNEMENT
+       :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <profile>
+            <id>env-dev-server</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <properties>
+                <super.environment.ci />
+            </properties>
+        </profile>
+
+    </profiles>
+    
+    
+    
+    <!-- ======================================================================= 
+    = DEPENDENCY MANAGEMENT
+    =========================================================================-->
+    <dependencyManagement>
+        <dependencies>
+            <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+            :: ORG 
+            ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+            <dependency>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctorj-pdf</artifactId>
+                <version>${_super.org-asciidoctor.asciidoctorj-pdf}</version>
+            </dependency>
+
+            <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+            :: OTHERS
+            ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+            <dependency>
+                <groupId>xalan</groupId>
+                <artifactId>xalan</artifactId>
+                <version>${_super.xalan.xalan}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    
+    <!-- ======================================================================= 
+    = BUILD
+    =========================================================================-->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources-filtered</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+
+
+        <pluginManagement>
+            <plugins>
+                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                :: org.maven
+                :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${_super.plugins.org-apache-maven-plugins.maven-enforcer-plugin}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${_super.plugins.org-apache-maven-plugins.maven-resources-plugin}</version>
+                    <dependencies>
+                        <!-- Recent version of maven-filtering prevents a 'Mark invalid' error when @ or JQuery expressions conflict with Maven 
+                            filtering. See http://jira.codehaus.org/browse/MSHARED-325 -->
+                        <dependency>
+                            <groupId>org.apache.maven.shared</groupId>
+                            <artifactId>maven-filtering</artifactId>
+                            <version>${_super.plugins.org-apache-maven-shared.maven-filtering}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${_super.plugins.org-apache-maven-plugins.maven-assembly-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${_super.plugins.org-apache-maven-plugins.maven-dependency-plugin}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${_super.plugins.org-apache-maven-plugins.maven-clean-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${_super.plugins.org-apache-maven-plugins.maven-release-plugin}</version>
+                    <configuration>
+                        <localCheckout>true</localCheckout>
+                        <tagNameFormat>v@{project.version}</tagNameFormat>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${_super.plugins.org-apache-maven-plugins.maven-site-plugin}</version>
+                    <configuration>
+                        <skip>${_super.plugin.site.disable}</skip>
+                        <skipDeploy>${_super.plugin.site.disable}</skipDeploy>
+                        <inputEncoding>${_super.plugin.site.inputEncoding}</inputEncoding>
+                        <outputEncoding>${_super.plugin.site.outputEncoding}</outputEncoding>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.doxia</groupId>
+                            <artifactId>doxia-module-docbook-simple</artifactId>
+                            <version>${_super.org-apache-maven-doxia}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.maven.doxia</groupId>
+                            <artifactId>doxia-module-markdown</artifactId>
+                            <version>${_super.org-apache-maven-doxia}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+
+                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                :: org.codehaus
+                :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xml-maven-plugin</artifactId>
+                    <version>${_super.plugins.org-codehaus-mojo.xml-maven-plugin}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>xalan</groupId>
+                            <artifactId>xalan</artifactId>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>buildnumber-maven-plugin</artifactId>
+                    <version>${_super.plugins.org-codehaus-mojo.buildnumber-maven-plugin}</version>
+                    <configuration>
+                        <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+                        <timestampFormat>${project.build.datePattern}</timestampFormat>
+                        <revisionOnScmFailure>false</revisionOnScmFailure>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${_super.plugins.org-codehaus-mojo.build-helper-maven-plugin}</version>
+                </plugin>
+                
+                
+                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                :: git
+                :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>${_super.plugins.pl-project13-maven.git-commit-id-plugin}</version>
+                    <configuration>
+                        <dateFormat>${project.build.datePattern}</dateFormat>
+                        <skipPoms>false</skipPoms>
+                        <!-- Do not fail the build -->
+                        <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                        <failOnUnableToExtractRepoInfo>false</failOnUnableToExtractRepoInfo>
+                        <!-- Generate file to attach to bare-POMs (other types JARs and archives will rather have properties in a MANIFEST-like 
+                            file) -->
+                        <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                        <generateGitPropertiesFilename>${project.build.sourceProperties.path}</generateGitPropertiesFilename>
+                        <!--<includeOnlyProperties></includeOnlyProperties> -->
+                        <!-- Inject as Maven properties (for JARs and archives to print them in their MANIFEST-like file) -->
+                        <injectAllReactorProjects>true</injectAllReactorProjects>
+                    </configuration>
+                </plugin>
+                
+                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                :: others
+                :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>${_super.plugins.org-asciidoctor.asciidoctor-maven-plugin}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj-pdf</artifactId>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+
+
+
+                <!--************************************************************
+                ** Eclipse Lifecycle mapping :
+                ** This plugin's configuration is used to store Eclipse m2e. 
+                ** It's allow to enable or not plugin activation when Eclipse
+                ** clean a project.
+                ** It has no influence on the Maven build itself
+                *************************************************************-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>${_super.plugins.org-eclipse-m2e.lifecycle-mapping}</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>buildnumber-maven-plugin</artifactId>
+                                        <versionRange>[1.3,)</versionRange>
+                                        <goals>
+                                            <goal>create-timestamp</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.groovy.maven</groupId>
+                                        <artifactId>gmaven-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>execute</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.jacoco</groupId>
+                                        <artifactId>jacoco-maven-plugin</artifactId>
+                                        <versionRange>[0.5,)</versionRange>
+                                        <goals>
+                                            <goal>prepare-agent</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.cxf</groupId>
+                                        <artifactId>cxf-xjc-plugin</artifactId>
+                                        <versionRange>[2,)</versionRange>
+                                        <goals>
+                                            <goal>xsdtojava</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.cxf</groupId>
+                                        <artifactId>cxf-codegen-plugin</artifactId>
+                                        <versionRange>[2,)</versionRange>
+                                        <goals>
+                                            <goal>wsdl2java</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.jvnet.jaxb2.maven2</groupId>
+                                        <artifactId>maven-jaxb2-plugin</artifactId>
+                                        <versionRange>[0.7,)</versionRange>
+                                        <goals>
+                                            <goal>generate</goal>
+                                            <goal>generate</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>de.codecentric</groupId>
+                                        <artifactId>jmeter-graph-maven-plugin</artifactId>
+                                        <versionRange>[0.1.0,)</versionRange>
+                                        <goals>
+                                            <goal>create-graph</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.lazerycode.jmeter</groupId>
+                                        <artifactId>jmeter-maven-plugin</artifactId>
+                                        <versionRange>[2.0.3,)</versionRange>
+                                        <goals>
+                                            <goal>create-graph</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>enforce</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-dependency-plugin</artifactId>
+                                        <versionRange>[0.0,)</versionRange>
+                                        <goals>
+                                            <goal>unpack</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>aspectj-maven-plugin</artifactId>
+                                        <versionRange>[0.0,)</versionRange>
+                                        <goals>
+                                            <goal>compile</goal>
+                                            <goal>test-compile</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>build-helper-maven-plugin</artifactId>
+                                        <versionRange>[1.10,)</versionRange>
+                                        <goals>
+                                            <goal>attach-artifact</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.inugami.maven.plugin</groupId>
+                                        <artifactId>inugami-maven-plugin</artifactId>
+                                        <versionRange>[0.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>buildArtifactType</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+
+
+
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${_super.plugins.org.codehaus.mojo-sonar-maven-plugin.version}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+
+        <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+        :: PLUGINS - BUILD
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <plugins>
+        
+            <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            + DEFAULT BUILD
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>jmeter-enforce-versions</id>
+                        <phase>${super.facet.jmeter}validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireProperty>
+                                    <property>super.facet.jmeter.test.name</property>
+                                    <regex>.+</regex>
+                                    <message>You must set a super.facet.jmeter.test.name property!</message>
+                                    <regexMessage>We must set "super.facet.jmeter.test.name" property!</regexMessage>
+                                </requireProperty>
+                            </rules>
+                        </configuration>
+                    </execution>
+
+
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-buildnumber</id>
+                        <phase>${super.enable.buildnumber}initialize</phase>
+                        <goals>
+                            <goal>create-timestamp</goal>
+                            <!-- Do not generate buildnumber from commit ID since git-commit-id-plugin does it already -->
+                            <!--<goal>create</goal> -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-source-info</id>
+                        <phase>${super.enable.git.source}initialize</phase>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-source-info</id>
+                        <phase>${super.enable.git.source}package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.sourceProperties.path}</file>
+                                    <type>properties</type>
+                                    <classifier>source</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            + JMETER
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${_super.plugins.org-apache-maven-plugins.maven-dependency-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>jmeter-copy-dependencies</id>
+                        <phase>${super.facet.jmeter}package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-common</artifactId>
+                                    <version>1.4.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-common</artifactId>
+                                    <version>1.4.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>net.minidev</groupId>
+                                    <artifactId>accessors-smart</artifactId>
+                                    <version>1.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.ow2.asm</groupId>
+                                    <artifactId>asm</artifactId>
+                                    <version>5.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-charts</artifactId>
+                                    <version>0.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-charts.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-graphs-basic</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-graphs-basic.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-graphs-additional</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-graphs-additional.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-graphs-composite</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-graphs-composite.jar</destFileName>
+                                </artifactItem>
+
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-graphs-ggl</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-graphs-ggl.jar</destFileName>
+                                </artifactItem>
+
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-graphs-vs</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-graphs-vs.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-graphs-dist</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-graphs-dist.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <version>1.4.0</version>
+                                    <artifactId>jmeter-plugins-standard</artifactId>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-standard.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-json</artifactId>
+                                    <version>2.3</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-json.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-functions</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-functions.jar</destFileName>
+                                </artifactItem>
+
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-httpraw</artifactId>
+                                    <version>0.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-httpraw.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-cmn-jmeter</artifactId>
+                                    <version>0.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-cmn-jmeter.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-common-io</artifactId>
+                                    <version>0.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-common-io.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-mergeresults</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-mergeresults.jar</destFileName>
+                                </artifactItem>
+
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-synthesis</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-synthesis.jar</destFileName>
+                                </artifactItem>
+
+
+                                <artifactItem>
+                                    <groupId>kg.apc</groupId>
+                                    <artifactId>jmeter-plugins-csvars</artifactId>
+                                    <version>0.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                    <destFileName>jmeter-plugins-csvars.jar</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.slf4j</groupId>
+                                    <artifactId>slf4j-api</artifactId>
+                                    <version>1.7.13</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+
+
+                                <artifactItem>
+                                    <groupId>commons-collections</groupId>
+                                    <artifactId>commons-collections</artifactId>
+                                    <version>3.2.2</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>commons-logging</groupId>
+                                    <artifactId>commons-logging</artifactId>
+                                    <version>1.2</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>net.sf.ezmorph</groupId>
+                                    <artifactId>ezmorph</artifactId>
+                                    <version>1.0.6</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.hamcrest</groupId>
+                                    <artifactId>hamcrest-core</artifactId>
+                                    <version>1.3</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${_super.facet.jmeter.lib.path}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>${_super.facet.jmeter.jmeter-maven-plugin.version}</version>
+                <configuration>
+                    <jMeterProcessJVMSettings>
+                        <xms>${_super.facet.jmeter.jmeter-maven-plugin.xms}</xms>
+                        <xmx>${_super.facet.jmeter.jmeter-maven-plugin.xmx}</xmx>
+                        <arguments>
+                            <argument>${_super.facet.jmeter.jmeter-maven-plugin.xx.new.size}</argument>
+                            <argument>${_super.facet.jmeter.jmeter-maven-plugin.xx.max.size}</argument>
+                            <argument>${super.facet.jmeter.jvm.arg}</argument>
+                        </arguments>
+                    </jMeterProcessJVMSettings>
+                    <testResultsTimestamp>false</testResultsTimestamp>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>${super.facet.jmeter}integration-test</phase>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>de.codecentric</groupId>
+                <artifactId>jmeter-graph-maven-plugin</artifactId>
+                <version>${_super.facet.jmeter.jmeter-graph-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>create-graphs</id>
+                        <phase>${super.facet.jmeter}integration-test</phase>
+                        <goals>
+                            <goal>create-graph</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+
+                <configuration>
+                    <inputFile>${project.build.directory}/jmeter/results/${super.facet.jmeter.test.name}.jtl</inputFile>
+                    <graphs>
+                        <graph>
+                            <pluginType>ThreadsStateOverTime</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ThreadsStateOverTime.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>BytesThroughputOverTime</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ThreadsStateOverTime.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>HitsPerSecond</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/HitsPerSecond.png</outputFile>
+                        </graph>
+
+
+                        <graph>
+                            <pluginType>LatenciesOverTime</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/LatenciesOverTime.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>ResponseCodesPerSecond</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ResponseCodesPerSecond.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>ResponseTimesDistribution</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ResponseTimesDistribution.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>ResponseTimesOverTime</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ResponseTimesOverTime.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>ResponseTimesPercentiles</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ResponseTimesPercentiles.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>ThroughputVsThreads</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ThroughputVsThreads.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>TimesVsThreads</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/TimesVsThreads.png</outputFile>
+                        </graph>
+
+                        <graph>
+                            <pluginType>TransactionsPerSecond</pluginType>
+                            <width>1200</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/TransactionsPerSecond.png</outputFile>
+                        </graph>
+
+                    </graphs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    
+    <!-- ======================================================================= 
+    = REPORTING
+    =========================================================================-->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changes-plugin</artifactId>
+                <version>${_super.reporting.org-apache-maven-plugins.maven-changes-plugin}</version>
+                <configuration>
+                    <xmlPath>${basedir}/src/site/changes.xml</xmlPath>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>changes-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${_super.reporting.org-apache-maven-plugins.maven-jxr-plugin}</version>
+                <configuration>
+                    <linkJavadoc>true</linkJavadoc>
+                    <javadocDir>${project.build.directory}/${project.artifactId}/apidocs</javadocDir>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${_super.reporting.org-apache-maven-plugins.maven-project-info-reports-plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${_super.reporting.org-apache-maven-plugins.maven-plugin-plugin}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>

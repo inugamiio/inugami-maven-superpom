@@ -1,0 +1,86 @@
+= Inugami Maven Superpom Plugin
+:encoding: UTF-8
+:toc: macro
+
+toc::[5]
+
+== Description
+Le superpom inugami plugin permet de facilité le développement et déploiement
+des plugins pour la inugami. 
+
+
+=== Déclaration que l'artifact est un plugin de la inugami
+Pour que l'artifact soit déclaré comme étant un plugin de la inugami il faut activer la propriété :
+
+[source,xml]
+.pom.xml
+----
+<properties>
+	<super.inugami.plugin />
+</properties>
+----
+
+=== Activation du mode développement
+Afin d'activer le mode développement sur un plugin il est nécessaire d'activer la properiété `super.env.dev`. 
+Cette activation va modifier le MANIFEST du plugin afin de gérer les resources en développement.
+
+=== Création du serveur inugami 
+Afin de pouvoir générer le server, il est nécessaire de configurer la property `super.inugami.server.home`
+
+La construction se déclanche via la commande `mvn build-server`
+
+Pour cela il faut ajouter un profile dans ses settings maven :
+
+[source,xml]
+.settings.xml
+----
+<profiles>
+	<profile>
+		<id>teslaTv</id>
+		<properties>
+			<super.inugami.server.home>/Users/pguillerm/dev/servers/inugami</super.inugami.server.home>  
+		</properties>
+	</profile>
+</profiles>
+----
+
+Ce profile doit être activer par défaut :
+
+[source,xml]
+.settings.xml
+----
+<activeProfiles>
+	<activeProfile>teslaTv</activeProfile>
+</activeProfiles>
+----
+
+
+==== Forçage du nettoyage du server
+Il est possible de forcer la suppression d'un ancien server lors de la création
+d'un nouveau. Cette opération est cependant risquée. Si ce comportement est
+souhaité, il faut activer la proprité suivante :
+
+[source,xml]
+.pom.xml
+----
+<properties>
+	<super.inugami.server.force.clean>true</super.inugami.server.force.clean>
+</properties>
+----
+
+
+
+=== Déploiement du plugin
+Le déploiement du plugin est déclanché par la phase `deploy-plugin`. 
+Pour fonctionner il faut avoir précédemment configuré la propriété `super.inugami.server.home`.
+
+==== Point d'attention
+
+* Les plugins sont déployés dans le dossier `${super.inugami.server.home}/plugins`.
+* Les dépendances sont quant à elles déployées dans le dossier `${super.inugami.server.home}/libs`.
+* Toutes les dépendances présentes dans la webapp de la inugami doivent être configurer en scope `provider`.
+* Il n'est pas autoriser d'avoir une version différentes d'une librairie présente dans la webapp de la inugami. La JVM ne pouvant pas garantir l'ordre de chargement des jars, il a été préférable de banir ces dépendances. Si le cas se présente le build sera en échec.
+
+
+
+
