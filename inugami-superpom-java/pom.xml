@@ -50,7 +50,7 @@
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES DASHBOARD-TV
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <super.inugami.version>0.0.1-SNAPSHOT</super.inugami.version>
+        <super.inugami.version>1.0.0</super.inugami.version>
         
          <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES JAVA EE
