@@ -222,9 +222,21 @@
         <url>${super.scm.url}</url>
         <connection>${super.scm.connection}</connection>
         <developerConnection>${project.scm.connection}</developerConnection>
-        <tag>v0.0.8</tag>
+        <tag>v0.0.0</tag>
     </scm>
-
+   
+    <distributionManagement>
+        <repository>
+            <id>inugami-release</id>
+            <name>inugami-release</name>
+            <url>http://inugami.io/artifactory/inugami-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>inugami-snapshot</id>
+            <name>inugami-snapshot</name>
+            <url>http://inugami.io/artifactory/inugami-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <ciManagement>
         <system>${super.ci.name}</system>
@@ -264,6 +276,19 @@
                 <_super.plugin.site.disable>true</_super.plugin.site.disable>
             </properties>
         </profile>
+        
+        
+        <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+        :: CI
+        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <profile>
+            <id>ci</id>
+            <properties>
+                <super.scm.url>https://github.com/inugamiio/inugami-maven-superpom</super.scm.url>
+                <super.scm.connection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</super.scm.connection>
+            </properties>
+        </profile>
+        
        
        <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
        :: ENVIRONNEMENT
