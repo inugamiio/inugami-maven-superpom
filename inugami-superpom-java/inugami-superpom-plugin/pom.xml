@@ -34,32 +34,7 @@
     </properties>
 
 
-   
-    <!-- ======================================================================= 
-    = DEPENDENCIES
-    =========================================================================-->
-    <dependencies>
-        <dependency>
-            <artifactId>inugami_core</artifactId>
-            <groupId>org.inugami</groupId>
-            <scope>provided</scope>
-        </dependency>
 
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
-
-    
     
     <!-- ======================================================================= 
     = BUILD
@@ -154,6 +129,46 @@
                         <envDev>${super.env.dev}</envDev>
                     </configuration>
                 </plugin>
+                
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.inugami.maven.plugin</groupId>
+                                        <artifactId>inugami-maven-plugin</artifactId>
+                                        <versionRange>[1.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>buildArtifactType</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>buildnumber-maven-plugin</artifactId>
+                                        <versionRange>[1.3,)</versionRange>
+                                        <goals>
+                                            <goal>create-timestamp</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+                
+                
             </plugins>
         </pluginManagement>
 
