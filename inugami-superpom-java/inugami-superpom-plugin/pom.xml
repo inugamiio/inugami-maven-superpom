@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ======================================================================= 
@@ -8,7 +9,7 @@
     <parent>
         <groupId>org.inugami.maven.superpom</groupId>
         <artifactId>inugami-superpom-java</artifactId>
-        <version>1.2.0-SNAPSHOT</version>
+        <version>1.2.1-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -29,8 +30,8 @@
         <_super.inugami.plugin.tomcat.version>8.0.44</_super.inugami.plugin.tomcat.version>
         <super.inugami.server.force.clean>false</super.inugami.server.force.clean>
 
-        <_super.plugin.inugami_plugin_lifecycle.version>1.0.0</_super.plugin.inugami_plugin_lifecycle.version>
-        <_super.plugin.inugami-plugin-maven.version>1.0.0</_super.plugin.inugami-plugin-maven.version>
+        <_super.plugin.inugami_plugin_lifecycle.version>1.0.2-SNAPSHOT</_super.plugin.inugami_plugin_lifecycle.version>
+        <_super.plugin.inugami-plugin-maven.version>1.0.1-SNAPSHOT</_super.plugin.inugami-plugin-maven.version>
     </properties>
 
 
@@ -60,6 +61,12 @@
                             <artifactId>inugami_webapp</artifactId>
                             <version>${super.inugami.version}</version>
                             <type>war</type>
+                        </dependency>
+
+                        <dependency>
+                            <groupId>org.inugami.plugins</groupId>
+                            <artifactId>inugami_plugins_root</artifactId>
+                            <version>${super.inugami.version}</version>
                         </dependency>
 
                         <dependency>
@@ -118,6 +125,15 @@
                             </goals>
                         </execution>
 
+                        <execution>
+                            <id>initializeProject</id>
+                            <phase>initialize-project</phase>
+                            <goals>
+                                <goal>initializeProject</goal>
+                            </goals>
+                        </execution>
+
+
 
 
                     </executions>
@@ -129,7 +145,7 @@
                         <envDev>${super.env.dev}</envDev>
                     </configuration>
                 </plugin>
-                
+
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -167,8 +183,8 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
-                
-                
+
+
             </plugins>
         </pluginManagement>
 
