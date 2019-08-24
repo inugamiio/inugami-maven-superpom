@@ -31,7 +31,7 @@
         <super.inugami.server.force.clean>false</super.inugami.server.force.clean>
 
         <_super.plugin.inugami_plugin_lifecycle.version>1.0.3</_super.plugin.inugami_plugin_lifecycle.version>
-        <_super.plugin.inugami-plugin-maven.version>1.0.1s</_super.plugin.inugami-plugin-maven.version>
+        <_super.plugin.inugami-plugin-maven.version>1.0.1</_super.plugin.inugami-plugin-maven.version>
     </properties>
 
 
