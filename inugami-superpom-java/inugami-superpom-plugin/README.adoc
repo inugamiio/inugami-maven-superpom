@@ -54,6 +54,9 @@ Ce profile doit être activer par défaut :
 </activeProfiles>
 ----
 
+==== Initialisation de l'environement Visual Code
+Afin d'initialiser ou ré-initialiser la configuration de l'environnement de Visual Code il 
+faut exécuter la commande : `mvn initialize-project` 
 
 ==== Forçage du nettoyage du server
 Il est possible de forcer la suppression d'un ancien server lors de la création
