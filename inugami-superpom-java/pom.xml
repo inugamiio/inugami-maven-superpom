@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ======================================================================= 
@@ -50,6 +51,7 @@
         :: DEPENDENCIES DASHBOARD-TV
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <super.inugami.version>1.3.2</super.inugami.version>
+        <_super.plugin.inugami_plugin_lifecycle.version>1.0.6</_super.plugin.inugami_plugin_lifecycle.version>
         
          <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES JAVA EE
@@ -61,6 +63,7 @@
         <_super.picketlink-javaee.version>2.7.1.Final</_super.picketlink-javaee.version>
         <_super.javax.servlet.version>3.0.1</_super.javax.servlet.version>
         <_super.org.jboss.weld.servlet.version>3.0.0.Alpha1</_super.org.jboss.weld.servlet.version>
+        <arquilian.enable>false</arquilian.enable>
         
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES LOGGINS
@@ -90,7 +93,8 @@
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES TESTS
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <_super.junit.junit>4.11</_super.junit.junit>
+        <_super.junit.junit>5.5.2</_super.junit.junit>
+        <_super.junit.junit.engine>5.5.2</_super.junit.junit.engine>
         <_super.org-assertj.assertj-core>1.7.0</_super.org-assertj.assertj-core>
         <_super.org-mockito.mockito-core>2.0.31-beta</_super.org-mockito.mockito-core>
         
@@ -103,6 +107,23 @@
         <_super.plugins.org-apache-maven-plugins.maven-source-plugin>2.4</_super.plugins.org-apache-maven-plugins.maven-source-plugin>
 
         <_super.plugins.org-apache-maven-plugins.maven-surefire-plugin>2.19.1</_super.plugins.org-apache-maven-plugins.maven-surefire-plugin>
+
+        <super.test.mutations>false</super.test.mutations>
+        <super.test.mutations.package></super.test.mutations.package>
+
+        <org.pitest.pitest-maven.version>1.4.10</org.pitest.pitest-maven.version>
+        <org.pitest.pitest-maven.threads>4</org.pitest.pitest-maven.threads>
+        <org.pitest.pitest-maven.maxDependencyDistance>2</org.pitest.pitest-maven.maxDependencyDistance>
+        <org.pitest.pitest-maven.timeoutFactor>2</org.pitest.pitest-maven.timeoutFactor>
+        <org.pitest.pitest-maven.mutationUnitSize>10</org.pitest.pitest-maven.mutationUnitSize>
+        <org.pitest.pitest-maven.timeoutConstant>10000</org.pitest.pitest-maven.timeoutConstant>
+        <org.pitest.pitest-maven.targetClasses>${super.test.mutations.package}</org.pitest.pitest-maven.targetClasses>
+        <org.pitest.pitest-maven.targetTests>${super.test.mutations.package}</org.pitest.pitest-maven.targetTests>
+        <org.pitest.pitest-maven.maxMutationsPerClass>30</org.pitest.pitest-maven.maxMutationsPerClass>
+        <org.pitest.pitest-maven.mutationUnitSize>0</org.pitest.pitest-maven.mutationUnitSize>
+        <org.pitest.pitest-junit5-plugin.version>0.10</org.pitest.pitest-junit5-plugin.version>
+        <org.junit.platform.version>1.3.2</org.junit.platform.version>
+
     </properties>
 
 
@@ -476,9 +497,15 @@
             :: TEST
             :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
                 <version>${_super.junit.junit}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${_super.junit.junit.engine}</version>
             </dependency>
 
             <dependency>
@@ -548,6 +575,12 @@
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.inugami.maven.plugin.lifecycle</groupId>
+                    <artifactId>inugami-maven-lifecycle</artifactId>
+                    <version>${_super.plugin.inugami_plugin_lifecycle.version}</version>
+                    <extensions>true</extensions>
+                </plugin>
 
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -641,6 +674,7 @@
                         </archive>
                     </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
 
@@ -649,6 +683,10 @@
         :: PLUGINS - BUILD
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <plugins>
+            <plugin>
+                <groupId>org.inugami.maven.plugin.lifecycle</groupId>
+                <artifactId>inugami-maven-lifecycle</artifactId>
+            </plugin>
 
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -690,17 +728,65 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${_super.plugins.org-apache-maven-plugins.maven-surefire-plugin}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>${_super.plugins.arquillian.test.path}</exclude>
-                        <exclude>${_super.plugins.arquillian.test.path.folder}</exclude>
-                        <exclude>${_super.plugins.selenium.test.path.files}</exclude>
-                        <exclude>${_super.plugins.selenium.test.path.folder}</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${org.pitest.pitest-maven.version}</version>
+                <executions>
+                    <execution>
+                        <id>super-mutationCoverage</id>
+                        <phase>${super.test.mutations}deep-test</phase>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <threads>${org.pitest.pitest-maven.threads}</threads>
+                    <maxDependencyDistance>${org.pitest.pitest-maven.maxDependencyDistance}</maxDependencyDistance>
+                    <timeoutFactor>${org.pitest.pitest-maven.timeoutFactor}</timeoutFactor>
+                    <mutationUnitSize>${org.pitest.pitest-maven.mutationUnitSize}</mutationUnitSize>
+                    <timeoutConstant>${org.pitest.pitest-maven.timeoutConstant}</timeoutConstant>
+                    <maxMutationsPerClass>${org.pitest.pitest-maven.maxMutationsPerClass}</maxMutationsPerClass>
+                    <mutationUnitSize>${org.pitest.pitest-maven.mutationUnitSize}</mutationUnitSize>
+                    <avoidCallsTo>
+                        <avoidCallsTo>java.util.logging</avoidCallsTo>
+                        <avoidCallsTo>org.apache.log4j</avoidCallsTo>
+                        <avoidCallsTo>org.slf4j</avoidCallsTo>
+                        <avoidCallsTo>org.apache.commons.logging</avoidCallsTo>
+                        <avoidCallsTo>org.hibernate</avoidCallsTo>
+                        <avoidCallsTo>javax.persistence</avoidCallsTo>
+                        <avoidCallsTo>io.jsonwebtoken</avoidCallsTo>
+                        <avoidCallsTo>org.springframework</avoidCallsTo>
+                    </avoidCallsTo>
+                    <targetClasses>
+                        <param>${org.pitest.pitest-maven.targetClasses}</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>${org.pitest.pitest-maven.targetTests}</param>
+                    </targetTests>
+                    <mutators>
+                        <mutator>ALL</mutator>
+                    </mutators>
+
+                    <reportSets>
+                        <reportSet>
+                            <reports>
+                                <report>report</report>
+                            </reports>
+                        </reportSet>
+                    </reportSets>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>${org.pitest.pitest-junit5-plugin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 

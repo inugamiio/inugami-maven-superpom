@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ======================================================================= 
@@ -29,7 +30,7 @@
         <_super.inugami.plugin.tomcat.version>8.0.44</_super.inugami.plugin.tomcat.version>
         <super.inugami.server.force.clean>false</super.inugami.server.force.clean>
 
-        <_super.plugin.inugami_plugin_lifecycle.version>1.0.3</_super.plugin.inugami_plugin_lifecycle.version>
+
         <_super.plugin.inugami-plugin-maven.version>1.0.1</_super.plugin.inugami-plugin-maven.version>
     </properties>
 
@@ -42,13 +43,6 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.inugami.maven.plugin.lifecycle</groupId>
-                    <artifactId>inugami-maven-lifecycle</artifactId>
-                    <version>${_super.plugin.inugami_plugin_lifecycle.version}</version>
-                    <extensions>true</extensions>
-                </plugin>
-
 
                 <plugin>
                     <groupId>org.inugami.maven.plugin</groupId>
@@ -189,11 +183,7 @@
 
 
         <plugins>
-            <plugin>
-                <groupId>org.inugami.maven.plugin.lifecycle</groupId>
-                <artifactId>inugami-maven-lifecycle</artifactId>
-            </plugin>
-
+            
             <plugin>
                 <groupId>org.inugami.maven.plugin</groupId>
                 <artifactId>inugami-maven-plugin</artifactId>
