@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ======================================================================= 
@@ -9,7 +8,7 @@
     <parent>
         <groupId>org.inugami.maven.superpom</groupId>
         <artifactId>superpom-root</artifactId>
-        <version>1.3.3-SNAPSHOT</version>
+        <version>1.3.3</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -109,7 +108,7 @@
         <_super.plugins.org-apache-maven-plugins.maven-surefire-plugin>2.19.1</_super.plugins.org-apache-maven-plugins.maven-surefire-plugin>
 
         <super.test.mutations>false</super.test.mutations>
-        <super.test.mutations.package></super.test.mutations.package>
+        <super.test.mutations.package />
 
         <org.pitest.pitest-maven.version>1.4.10</org.pitest.pitest-maven.version>
         <org.pitest.pitest-maven.threads>4</org.pitest.pitest-maven.threads>
