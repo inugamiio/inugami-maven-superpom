@@ -36,7 +36,7 @@ Pour cela il faut ajouter un profile dans ses settings maven :
 ----
 <profiles>
 	<profile>
-		<id>teslaTv</id>
+		<id>Inugami</id>
 		<properties>
 			<super.inugami.server.home>/Users/pguillerm/dev/servers/inugami</super.inugami.server.home>  
 		</properties>
@@ -50,7 +50,7 @@ Ce profile doit être activer par défaut :
 .settings.xml
 ----
 <activeProfiles>
-	<activeProfile>teslaTv</activeProfile>
+	<activeProfile>Inugami</activeProfile>
 </activeProfiles>
 ----
 
