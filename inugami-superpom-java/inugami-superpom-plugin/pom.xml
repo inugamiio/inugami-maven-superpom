@@ -28,7 +28,7 @@
         <super.inugami.server.home/>
         <_super.inugami.plugin.tomcat.version>8.0.44</_super.inugami.plugin.tomcat.version>
         <super.inugami.server.force.clean>false</super.inugami.server.force.clean>
-        <_super.plugin.inugami-plugin-maven.version>2.0.0-SNAPSHOT</_super.plugin.inugami-plugin-maven.version>
+        <_super.plugin.inugami-plugin-maven.version>2.0.0</_super.plugin.inugami-plugin-maven.version>
     </properties>
 
     <!-- ======================================================================= 

@@ -222,18 +222,16 @@
         <developerConnection>${project.scm.connection}</developerConnection>
         <tag>v1.0.1</tag>
     </scm>
-   
+
     <distributionManagement>
-        <repository>
-            <id>inugami-release</id>
-            <name>inugami-release</name>
-            <url>http://inugami.io/artifactory/inugami-release</url>
-        </repository>
         <snapshotRepository>
-            <id>inugami-snapshot</id>
-            <name>inugami-snapshot</name>
-            <url>http://inugami.io/artifactory/inugami-snapshot</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
     <ciManagement>

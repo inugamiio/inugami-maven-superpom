@@ -56,8 +56,8 @@
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES DASHBOARD-TV
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <super.inugami.version>2.0.0-SNAPSHOT</super.inugami.version>
-        <_super.plugin.inugami_plugin_lifecycle.version>2.0.0-SNAPSHOT</_super.plugin.inugami_plugin_lifecycle.version>
+        <super.inugami.version>2.0.0</super.inugami.version>
+        <_super.plugin.inugami_plugin_lifecycle.version>2.0.0</_super.plugin.inugami_plugin_lifecycle.version>
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
        :: DEPENDENCIES JAVA EE
