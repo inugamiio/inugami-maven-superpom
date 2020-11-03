@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ======================================================================= 
@@ -18,6 +19,8 @@
     =========================================================================-->
     <artifactId>inugami-superpom-java</artifactId>
     <packaging>pom</packaging>
+    <description>Inugami Java superpom</description>
+    <url>${super.project.url}</url>
 
 
     <modules>
@@ -34,6 +37,25 @@
             <url>https://www.gnu.org/licenses/gpl.txt</url>
         </license>
     </licenses>
+
+    <!-- =======================================================================
+    = DEVELOPERS
+    ======================================================================== -->
+    <developers>
+        <developer>
+            <name>Mikhaïl Sadovnikov</name>
+            <email>mis.strator@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+
+        <developer>
+            <name>Patrick Guillerm</name>
+            <email>patrickguillerm@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+    </developers>
     <!-- ======================================================================= 
     = PROPERTIES
     =========================================================================-->
@@ -43,13 +65,13 @@
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <super.jdk>11</super.jdk>
         <super.jdk.arg>-parameters</super.jdk.arg>
-        <_super.jdk.env.java.home />
-        <_super.jdk.env.property.name />
+        <_super.jdk.env.java.home/>
+        <_super.jdk.env.property.name/>
         <super.env.dev>false</super.env.dev>
 
         <!-- temporarily disabled... must have CI environment control for force JDK compiler -->
-        <_super.jdk.javac.executable />
-        <_super.jdk.test.executable />
+        <_super.jdk.javac.executable/>
+        <_super.jdk.test.executable/>
         <_super.jdk.javac.executable>${_super.jdk.env.java.home}/bin/javac</_super.jdk.javac.executable>
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -118,7 +140,7 @@
         </_super.plugins.org-apache-maven-plugins.maven-surefire-plugin>
 
         <super.test.mutations>false</super.test.mutations>
-        <super.test.mutations.package />
+        <super.test.mutations.package/>
 
         <org.pitest.pitest-maven.version>1.4.10</org.pitest.pitest-maven.version>
         <org.pitest.pitest-maven.threads>4</org.pitest.pitest-maven.threads>

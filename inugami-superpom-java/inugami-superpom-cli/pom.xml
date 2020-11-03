@@ -17,6 +17,8 @@
     =========================================================================-->
     <artifactId>inugami-superpom-cli</artifactId>
     <packaging>pom</packaging>
+    <description>Inugami Java superpom</description>
+    <url>${super.project.url}</url>
 
     <!-- ======================================================================= 
     = PROPERTIES
@@ -40,7 +42,24 @@
             <url>https://www.gnu.org/licenses/gpl.txt</url>
         </license>
     </licenses>
-    
+    <!-- =======================================================================
+    = DEVELOPERS
+    ======================================================================== -->
+    <developers>
+        <developer>
+            <name>Mikhaïl Sadovnikov</name>
+            <email>mis.strator@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+
+        <developer>
+            <name>Patrick Guillerm</name>
+            <email>patrickguillerm@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+    </developers>
     <!-- ======================================================================= 
     = DEPENDENCIES
     =========================================================================-->

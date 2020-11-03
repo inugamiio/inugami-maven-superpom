@@ -17,6 +17,8 @@
     =========================================================================-->
     <artifactId>inugami-superpom-plugin</artifactId>
     <packaging>pom</packaging>
+    <description>Inugami Plugin superpom</description>
+    <url>${super.project.url}</url>
 
     <!-- ======================================================================= 
     = PROPERTIES
@@ -25,7 +27,7 @@
         <super.inugami.plugin>false</super.inugami.plugin>
         <super.inugami.plugins.set>false</super.inugami.plugins.set>
         <super.inugami.server.home />
-        <_super.inugami.plugin.tomcat.version>8.0.44</_super.inugami.plugin.tomcat.version>
+        <_super.inugami.plugin.tomcat.version>9.0.39</_super.inugami.plugin.tomcat.version>
         <super.inugami.server.force.clean>false</super.inugami.server.force.clean>
         <_super.plugin.inugami-plugin-maven.version>2.0.0</_super.plugin.inugami-plugin-maven.version>
     </properties>
@@ -39,6 +41,25 @@
             <url>https://www.gnu.org/licenses/gpl.txt</url>
         </license>
     </licenses>
+
+    <!-- =======================================================================
+    = DEVELOPERS
+    ======================================================================== -->
+    <developers>
+        <developer>
+            <name>Mikhaïl Sadovnikov</name>
+            <email>mis.strator@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+
+        <developer>
+            <name>Patrick Guillerm</name>
+            <email>patrickguillerm@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+    </developers>
     <!-- =======================================================================
     = BUILD
     =========================================================================-->
