@@ -241,6 +241,17 @@
         <tag>v1.0.1</tag>
     </scm>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <ciManagement>
         <system>${super.ci.name}</system>
         <url>${_super.ci.host}${_super.ci.host.context}${_super.ci.host.context}${_super.ci.view}</url>
