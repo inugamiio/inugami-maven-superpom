@@ -15,7 +15,7 @@
     =========================================================================-->
     <groupId>io.inugami.maven.superpom</groupId>
     <artifactId>superpom-root</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>2.0.0</version>
 
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
@@ -220,7 +220,7 @@
         <url>${super.scm.url}</url>
         <connection>${super.scm.connection}</connection>
         <developerConnection>${project.scm.connection}</developerConnection>
-        <tag>v1.0.1</tag>
+        <tag>v2.0.0</tag>
     </scm>
 
     <distributionManagement>
