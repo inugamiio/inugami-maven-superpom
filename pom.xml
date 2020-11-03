@@ -15,12 +15,11 @@
     =========================================================================-->
     <groupId>io.inugami.maven.superpom</groupId>
     <artifactId>superpom-root</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
-
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>${project.artifactId}</name>
-
-    <description>Inugami Maven parent POM.</description>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Specifics maven lifecycle to package and run inugami project</description>
+    <url>${super.project.url}</url>
 
     <organization>
         <name>${super.organization.name}</name>
@@ -37,8 +36,26 @@
             <url>https://www.gnu.org/licenses/gpl.txt</url>
         </license>
     </licenses>
-    
-    
+
+    <!-- =======================================================================
+    = DEVELOPERS
+    ======================================================================== -->
+    <developers>
+        <developer>
+            <name>Mikhaïl Sadovnikov</name>
+            <email>mis.strator@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+
+        <developer>
+            <name>Patrick Guillerm</name>
+            <email>patrickguillerm@inugami.io</email>
+            <organization>Inugami.io</organization>
+            <organizationUrl>http://inugami.io</organizationUrl>
+        </developer>
+    </developers>
+
     <!-- ======================================================================= 
     = PROPERTIES
     =========================================================================-->
@@ -49,7 +66,7 @@
         <super.project.team />
         <super.project.bugtracker.name />
         <super.project.bugtracker.url />
-
+        <super.pgpg.enable>false</super.pgpg.enable>
         <super.project.wiki.url />
         <super.site.deploy.url />
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,6 +75,7 @@
 
         <super.enforcer.enable />
         <super.environment.ci>false</super.environment.ci>
+        <super.project.url>http://inugami.io</super.project.url>
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: SITE
@@ -222,17 +240,6 @@
         <developerConnection>${project.scm.connection}</developerConnection>
         <tag>v1.0.1</tag>
     </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <ciManagement>
         <system>${super.ci.name}</system>
@@ -1213,6 +1220,51 @@
                     </graphs>
                 </configuration>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>${super.pgpg.enable}install</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <useAgent>true</useAgent>
+                    <passphrase>${gpg.passphrase}</passphrase>
+                </configuration>
+            </plugin>
+                
         </plugins>
     </build>
     
