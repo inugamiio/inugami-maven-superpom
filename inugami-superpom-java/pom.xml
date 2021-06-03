@@ -85,7 +85,7 @@
         <_super.javax.javaee-api.version>8.0</_super.javax.javaee-api.version>
         <_super.javax.cdi-api.version>2.0</_super.javax.cdi-api.version>
         <_super.org.jboss.weld.version>3.0.2.Final</_super.org.jboss.weld.version>
-        <_super.org.jboss.resteasy.version>4.0.0.Beta1</_super.org.jboss.resteasy.version>
+        <_super.org.jboss.resteasy.version>4.5.7.Final</_super.org.jboss.resteasy.version>
         <_super.picketlink-javaee.version>2.7.1.Final</_super.picketlink-javaee.version>
         <_super.javax.servlet.version>3.0.1</_super.javax.servlet.version>
         <_super.org.jboss.weld.servlet.version>3.0.0.Alpha1</_super.org.jboss.weld.servlet.version>
