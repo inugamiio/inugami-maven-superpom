@@ -114,7 +114,7 @@
         <_super.org.ehcache.version>3.3.1</_super.org.ehcache.version>
         <_super.org.tuckey.urlrewritefilter.version>4.0.4</_super.org.tuckey.urlrewritefilter.version>
         <_super.org.jsoup.version>1.10.2</_super.org.jsoup.version>
-        <_super.org.apache.tomcat.version>9.0.39</_super.org.apache.tomcat.version>
+        <_super.org.apache.tomcat.version>9.0.45</_super.org.apache.tomcat.version>
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES TESTS
