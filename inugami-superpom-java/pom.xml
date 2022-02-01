@@ -108,7 +108,7 @@
         <_super.org.apache.httpcomponents.version>4.5.3</_super.org.apache.httpcomponents.version>
         <_super.org.apache.commons.io.version>2.5</_super.org.apache.commons.io.version>
         <_super.org.apache.commons.cli.version>1.4</_super.org.apache.commons.cli.version>
-        <_super.com.thoughtworks.xstream.version>1.4.13</_super.com.thoughtworks.xstream.version>
+        <_super.com.thoughtworks.xstream.version>1.4.19</_super.com.thoughtworks.xstream.version>
         <_super.net.sf.flexjson.version>3.3</_super.net.sf.flexjson.version>
         <_super.org.quartz.version>2.3.2</_super.org.quartz.version>
         <_super.org.ehcache.version>3.3.1</_super.org.ehcache.version>
