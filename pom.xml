@@ -223,6 +223,11 @@
         <jgitflow.noTag>true</jgitflow.noTag>
         <jgitflow.featureName/>
 
+        <distributionManagement-name>ossrh</distributionManagement-name>
+        <distributionManagement-url-release>https://oss.sonatype.org/service/local/staging/deploy/maven2/</distributionManagement-url-release>
+        <distributionManagement-url-snapshot>https://oss.sonatype.org/content/repositories/snapshots</distributionManagement-url-snapshot>
+
+
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: SONAR
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
@@ -260,14 +265,15 @@
         <tag>v1.0.1</tag>
     </scm>
 
+
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>${distributionManagement}</id>
+            <url>${distributionManagement-url-snapshot}</url>
         </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>${distributionManagement}</id>
+            <url>${distributionManagement-url-release}</url>
         </repository>
     </distributionManagement>
 
