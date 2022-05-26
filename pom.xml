@@ -18,8 +18,8 @@
     <version>2.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>Specifics maven lifecycle to package and run inugami project</description>
-    <url>${super.project.url}</url>
+    <description>Inugami maven super pom</description>
+    <url>http://inugami.io</url>
 
     <organization>
         <name>${super.organization.name}</name>
@@ -66,7 +66,8 @@
         <super.project.team />
         <super.project.bugtracker.name />
         <super.project.bugtracker.url />
-        <super.pgpg.enable>false</super.pgpg.enable>
+        <super.project.bugtracker.url />
+        <super.pgpg.enable></super.pgpg.enable>
         <super.project.wiki.url />
         <super.site.deploy.url />
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -256,14 +257,12 @@
     <!-- ======================================================================= 
     = SCM AND CI 
     =========================================================================-->
-
     <scm>
-        <url>${super.scm.url}</url>
-        <connection>${super.scm.connection}</connection>
-        <developerConnection>${project.scm.connection}</developerConnection>
-        <tag>v1.0.1</tag>
+        <url>https://github.com/inugamiio/inugami-maven-superpom</url>
+        <connection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</connection>
+        <developerConnection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
-
 
     <distributionManagement>
         <snapshotRepository>
@@ -314,18 +313,13 @@
             </properties>
         </profile>
 
-
-        <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
-        :: CI
-        :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <profile>
-            <id>ci</id>
+            <id>disable-pgpg</id>
             <properties>
-                <super.scm.url>https://github.com/inugamiio/inugami-maven-superpom</super.scm.url>
-                <super.scm.connection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</super.scm.connection>
-                <super.pgpg.enable />
+                <super.pgpg.enable>false</super.pgpg.enable>
             </properties>
         </profile>
+
 
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
