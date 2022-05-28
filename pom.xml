@@ -15,7 +15,7 @@
     =========================================================================-->
     <groupId>io.inugami.maven.superpom</groupId>
     <artifactId>superpom-root</artifactId>
-    <version>2.0.3-SNAPSHOT</version>
+    <version>2.0.3</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Inugami maven super pom</description>
@@ -67,7 +67,7 @@
         <super.project.bugtracker.name />
         <super.project.bugtracker.url />
         <super.project.bugtracker.url />
-        <super.pgpg.enable></super.pgpg.enable>
+        <super.pgpg.enable />
         <super.project.wiki.url />
         <super.site.deploy.url />
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -261,7 +261,7 @@
         <url>https://github.com/inugamiio/inugami-maven-superpom</url>
         <connection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</connection>
         <developerConnection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v2.0.3</tag>
     </scm>
 
     <distributionManagement>
