@@ -94,7 +94,7 @@
         :: DEPENDENCIES LOGGINS
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <_super.org-slf4j.slf4j-api>1.7.21</_super.org-slf4j.slf4j-api>
-        <_super.ch-qos-logback.logback-classic>1.1.7</_super.ch-qos-logback.logback-classic>
+        <_super.ch-qos-logback.logback-classic>1.2.0</_super.ch-qos-logback.logback-classic>
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: DEPENDENCIES OTHERS
