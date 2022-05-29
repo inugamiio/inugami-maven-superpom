@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- ======================================================================= 
+    <!-- =======================================================================
     = MAVEN
     =========================================================================-->
     <prerequisites>
@@ -11,18 +11,18 @@
     </prerequisites>
 
 
-    <!-- ======================================================================= 
+    <!-- =======================================================================
     = PROJECT INFOS
     =========================================================================-->
     <groupId>io.inugami.maven.superpom</groupId>
     <artifactId>superpom-root</artifactId>
-    <version>2.0.3-SNAPSHOT</version>
+    <version>2.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Specifics maven lifecycle to package and run inugami project</description>
     <url>http://inugami.io</url>
 
-    <!-- ======================================================================= 
+    <!-- =======================================================================
     = LICENSE
     ======================================================================== -->
     <licenses>
@@ -51,7 +51,7 @@
 
     </developers>
 
-    <!-- ======================================================================= 
+    <!-- =======================================================================
     = PROPERTIES
     =========================================================================-->
     <properties>
@@ -227,7 +227,7 @@
     </properties>
 
 
-    <!-- ======================================================================= 
+    <!-- =======================================================================
     = MODULES
     =========================================================================-->
     <modules>
@@ -235,8 +235,8 @@
     </modules>
 
 
-    <!-- ======================================================================= 
-    = SCM AND CI 
+    <!-- =======================================================================
+    = SCM AND CI
     =========================================================================-->
     <scm>
         <url>https://github.com/inugamiio/inugami-maven-superpom</url>
@@ -263,7 +263,7 @@
     =========================================================================-->
     <profiles>
 
-        <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: facets
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <profile>
@@ -304,13 +304,13 @@
     </profiles>
 
 
-    <!-- ======================================================================= 
+    <!-- =======================================================================
     = DEPENDENCY MANAGEMENT
     =========================================================================-->
     <dependencyManagement>
         <dependencies>
-            <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
-            :: ORG 
+            <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+            :: ORG
             ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
             <dependency>
                 <groupId>org.asciidoctor</groupId>
@@ -318,7 +318,7 @@
                 <version>${_super.org-asciidoctor.asciidoctorj-pdf}</version>
             </dependency>
 
-            <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+            <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
             :: OTHERS
             ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
             <dependency>
@@ -330,7 +330,7 @@
     </dependencyManagement>
 
 
-    <!-- ======================================================================= 
+    <!-- =======================================================================
     = BUILD
     =========================================================================-->
     <build>
@@ -354,7 +354,7 @@
 
         <pluginManagement>
             <plugins>
-                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
                 :: org.maven
                 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
                 <plugin>
@@ -368,7 +368,7 @@
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>${_super.plugins.org-apache-maven-plugins.maven-resources-plugin}</version>
                     <dependencies>
-                        <!-- Recent version of maven-filtering prevents a 'Mark invalid' error when @ or JQuery expressions conflict with Maven 
+                        <!-- Recent version of maven-filtering prevents a 'Mark invalid' error when @ or JQuery expressions conflict with Maven
                             filtering. See http://jira.codehaus.org/browse/MSHARED-325 -->
                         <dependency>
                             <groupId>org.apache.maven.shared</groupId>
@@ -431,7 +431,7 @@
                 </plugin>
 
 
-                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
                 :: org.codehaus
                 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
                 <plugin>
@@ -462,7 +462,7 @@
                 </plugin>
 
 
-                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
                 :: git
                 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
                 <plugin>
@@ -475,7 +475,7 @@
                         <!-- Do not fail the build -->
                         <failOnNoGitDirectory>false</failOnNoGitDirectory>
                         <failOnUnableToExtractRepoInfo>false</failOnUnableToExtractRepoInfo>
-                        <!-- Generate file to attach to bare-POMs (other types JARs and archives will rather have properties in a MANIFEST-like 
+                        <!-- Generate file to attach to bare-POMs (other types JARs and archives will rather have properties in a MANIFEST-like
                             file) -->
                         <generateGitPropertiesFile>true</generateGitPropertiesFile>
                         <generateGitPropertiesFilename>${project.build.sourceProperties.path}
@@ -486,7 +486,7 @@
                     </configuration>
                 </plugin>
 
-                <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+                <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
                 :: others
                 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
                 <plugin>
@@ -504,7 +504,7 @@
 
                 <!--************************************************************
                 ** Eclipse Lifecycle mapping :
-                ** This plugin's configuration is used to store Eclipse m2e. 
+                ** This plugin's configuration is used to store Eclipse m2e.
                 ** It's allow to enable or not plugin activation when Eclipse
                 ** clean a project.
                 ** It has no influence on the Maven build itself
