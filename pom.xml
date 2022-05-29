@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- =======================================================================
@@ -16,7 +15,7 @@
     =========================================================================-->
     <groupId>io.inugami.maven.superpom</groupId>
     <artifactId>superpom-root</artifactId>
-    <version>2.0.4-SNAPSHOT</version>
+    <version>2.0.4</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Specifics maven lifecycle to package and run inugami project</description>
@@ -58,22 +57,22 @@
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: GLOBALE
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <super.project.team/>
-        <super.project.bugtracker.name/>
-        <super.project.bugtracker.url/>
-        <super.project.bugtracker.url/>
-        <super.pgpg.enable></super.pgpg.enable>
-        <super.project.wiki.url/>
-        <super.site.deploy.url/>
+        <super.project.team />
+        <super.project.bugtracker.name />
+        <super.project.bugtracker.url />
+        <super.project.bugtracker.url />
+        <super.pgpg.enable />
+        <super.project.wiki.url />
+        <super.site.deploy.url />
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.datePattern>yyyy-MM-dd'T'HH:mm:ss.SSSZ</project.build.datePattern>
         <project.build.sourceProperties.path>${project.build.directory}/source.properties
         </project.build.sourceProperties.path>
 
-        <super.enforcer.enable/>
+        <super.enforcer.enable />
         <super.environment.ci>false</super.environment.ci>
         <super.project.url>http://inugami.io</super.project.url>
-        <maven-gpg-plugin.enabled/>
+        <maven-gpg-plugin.enabled />
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: SITE
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
@@ -88,27 +87,27 @@
         <_super.plugin.site.disable>true</_super.plugin.site.disable>
         <_super.plugin.site.path>src/site</_super.plugin.site.path>
 
-        <super.enable.git.source/>
+        <super.enable.git.source />
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: CI
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <_super.ci.host/>
+        <_super.ci.host />
         <_super.ci.host.context>/jenkins</_super.ci.host.context>
-        <_super.ci.view/>
+        <_super.ci.view />
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: MAILING LIST
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <_super.mailing.list.name/>
-        <_super.mailing.list.post/>
+        <_super.mailing.list.name />
+        <_super.mailing.list.post />
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: JMETER
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <super.facet.jmeter>false</super.facet.jmeter>
-        <super.facet.jmeter.test.name/>
-        <super.facet.jmeter.jvm.arg/>
+        <super.facet.jmeter.test.name />
+        <super.facet.jmeter.jvm.arg />
         <_super.facet.jmeter.lib.path>${project.build.directory}/jmeter/lib/ext</_super.facet.jmeter.lib.path>
         <_super.facet.jmeter.jmeter-maven-plugin.version>2.0.3</_super.facet.jmeter.jmeter-maven-plugin.version>
         <_super.facet.jmeter.jmeter-graph-maven-plugin.version>0.1.0
@@ -124,7 +123,7 @@
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: GIT BUILD NUMBER
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <super.enable.buildnumber/>
+        <super.enable.buildnumber />
 
 
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -191,16 +190,16 @@
 
 
         <!-- Maven plugins -->
-        <maven.assembly.plugin/>
-        <maven.docker.spotify.plugin/>
-        <maven.docker.rhuss.plugin/>
-        <maven.katana.plugin/>
+        <maven.assembly.plugin />
+        <maven.docker.spotify.plugin />
+        <maven.docker.rhuss.plugin />
+        <maven.katana.plugin />
 
         <!-- jGitFlow plugin -->
         <jgitflow.pushReleases>false</jgitflow.pushReleases>
         <jgitflow.noDeploy>true</jgitflow.noDeploy>
         <jgitflow.noTag>true</jgitflow.noTag>
-        <jgitflow.featureName/>
+        <jgitflow.featureName />
 
         <distributionManagement-name>ossrh</distributionManagement-name>
         <distributionManagement-url-release>https://oss.sonatype.org/service/local/staging/deploy/maven2/
@@ -212,7 +211,7 @@
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         :: SONAR
         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-        <super.sonar.exclusions/>
+        <super.sonar.exclusions />
         <super.sonar.java.coveragePlugin>jacoco</super.sonar.java.coveragePlugin>
 
         <sonar.exclusions>
@@ -242,7 +241,7 @@
         <url>https://github.com/inugamiio/inugami-maven-superpom</url>
         <connection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</connection>
         <developerConnection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v2.0.4</tag>
     </scm>
 
 
@@ -297,7 +296,7 @@
                 </property>
             </activation>
             <properties>
-                <super.environment.ci/>
+                <super.environment.ci />
             </properties>
         </profile>
 
@@ -527,7 +526,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
 
@@ -541,7 +540,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
 
@@ -555,7 +554,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
 
@@ -569,7 +568,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
 
@@ -583,7 +582,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
 
@@ -598,7 +597,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -611,7 +610,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
 
@@ -625,7 +624,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
 
@@ -640,7 +639,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
 
@@ -654,7 +653,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
 
@@ -669,7 +668,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
 
@@ -683,7 +682,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
 
@@ -697,7 +696,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
 
@@ -711,7 +710,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
