@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ======================================================================= 
@@ -26,10 +27,10 @@
     <properties>
         <super.inugami.plugin>false</super.inugami.plugin>
         <super.inugami.plugins.set>false</super.inugami.plugins.set>
-        <super.inugami.server.home />
+        <super.inugami.server.home/>
         <_super.inugami.plugin.tomcat.version>9.0.39</_super.inugami.plugin.tomcat.version>
         <super.inugami.server.force.clean>false</super.inugami.server.force.clean>
-        <_super.plugin.inugami-plugin-maven.version>2.0.0</_super.plugin.inugami-plugin-maven.version>
+        <_super.plugin.inugami-plugin-maven.version>2.0.1</_super.plugin.inugami-plugin-maven.version>
     </properties>
 
     <!-- ======================================================================= 
@@ -177,7 +178,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute />
+                                        <execute/>
                                     </action>
                                 </pluginExecution>
 
@@ -191,7 +192,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
