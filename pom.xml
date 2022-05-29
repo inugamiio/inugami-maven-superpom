@@ -15,7 +15,7 @@
     =========================================================================-->
     <groupId>io.inugami.maven.superpom</groupId>
     <artifactId>superpom-root</artifactId>
-    <version>2.0.4</version>
+    <version>2.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Specifics maven lifecycle to package and run inugami project</description>
@@ -241,7 +241,7 @@
         <url>https://github.com/inugamiio/inugami-maven-superpom</url>
         <connection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</connection>
         <developerConnection>scm:git:git@github.com:inugamiio/inugami-maven-superpom.git</developerConnection>
-        <tag>v2.0.4</tag>
+        <tag>HEAD</tag>
     </scm>
 
 
