@@ -26,7 +26,7 @@
         <super.inugami.plugin>false</super.inugami.plugin>
         <super.inugami.plugins.set>false</super.inugami.plugins.set>
         <super.inugami.server.home />
-        <_super.inugami.plugin.tomcat.version>9.0.39</_super.inugami.plugin.tomcat.version>
+        <_super.inugami.plugin.tomcat.version>9.0.65</_super.inugami.plugin.tomcat.version>
         <super.inugami.server.force.clean>false</super.inugami.server.force.clean>
         <_super.plugin.inugami-plugin-maven.version>2.0.0</_super.plugin.inugami-plugin-maven.version>
     </properties>
