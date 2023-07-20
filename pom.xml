@@ -181,7 +181,7 @@
 
         <!--// dependencies versions //______________________________________-->
         <_super.org-asciidoctor.asciidoctorj-pdf>1.5.0-alpha.6</_super.org-asciidoctor.asciidoctorj-pdf>
-        <_super.xalan.xalan>2.7.2</_super.xalan.xalan>
+        <_super.xalan.xalan>2.7.3</_super.xalan.xalan>
         <_super.org-apache-maven-doxia>1.3</_super.org-apache-maven-doxia>
 
 
